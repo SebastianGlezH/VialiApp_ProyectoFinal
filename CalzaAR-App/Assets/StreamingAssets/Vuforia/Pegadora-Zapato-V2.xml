@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+<Tracking>
+<ModelTarget name="Pegadora-Zapato-V2" motionHint="adaptive" trackingMode="car" optimizeTrackingFor="default"/>
+
+</Tracking>
+
+<Assembly name="Pegadora-Zapato-V2s_assembly" assemblyId="a298e9ea5659453b9649b53e0b3c810a">
+<Part name="Pegadora-Zapato-V2" translation="0 0 0" rotation="AD: 0 0 1 0"/>
+<EntryPoint name="GuideView_0000" translation="0.0593291 0.619418 2.1284" rotation="AD: -0.976167 -0.280111 1.27206 164.954" trained="no">
+
+</EntryPoint>
+
+</Assembly>
+
+</QCARConfig>
