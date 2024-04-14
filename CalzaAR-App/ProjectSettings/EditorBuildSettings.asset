@@ -22,10 +22,10 @@ EditorBuildSettings:
     guid: d8675eeea4098664ca36f11c88e9bb40
   - enabled: 1
     path: Assets/Scenes/Leccion 2.unity
-    guid: f097db09c7e512647918713815aefb95
+    guid: 2fe67e09ef9de414db90a57c1a6e7886
   - enabled: 1
     path: Assets/Scenes/Leccion 3.unity
-    guid: 38c1ce16e9e8a8647bec68d32aa321f1
+    guid: 3158d09eb2e582e4c8b16d09ad53f539
   - enabled: 1
     path: Assets/Scenes/Quizz.unity
     guid: c72de5be2c87d9043bb609e6bfe35d51
