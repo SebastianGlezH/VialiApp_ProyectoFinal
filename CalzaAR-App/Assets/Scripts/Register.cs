@@ -8,11 +8,13 @@ using UnityEngine.SceneManagement;
 
 public class Register : MonoBehaviour
 {
-
     public InputField usernameInput;
     public InputField passwordInput;
     public Button registerButton;
     public Button goToLoginButton;
+
+    public GameObject emptyFieldErrorObject; // Objeto para mostrar error de campos vacíos
+    public GameObject usernameExistsErrorObject; // Objeto para mostrar error de nombre de usuario existente
 
     ArrayList credentials;
 
@@ -30,17 +32,21 @@ public class Register : MonoBehaviour
         {
             File.WriteAllText(Application.dataPath + "/credentials.txt", "");
         }
-
     }
 
     void goToLoginScene()
     {
-        SceneManager.LoadScene("Login");
+        SceneManager.LoadScene("Usuario_Login");
     }
-
 
     void writeStuffToFile()
     {
+        if (AreInputsEmpty())
+        {
+            emptyFieldErrorObject.SetActive(true); // Activar el objeto de error de campos vacíos
+            return;
+        }
+
         bool isExists = false;
 
         credentials = new ArrayList(File.ReadAllLines(Application.dataPath + "/credentials.txt"));
@@ -55,6 +61,7 @@ public class Register : MonoBehaviour
 
         if (isExists)
         {
+            usernameExistsErrorObject.SetActive(true); // Activar el objeto de error de nombre de usuario existente
             Debug.Log($"Username '{usernameInput.text}' already exists");
         }
         else
@@ -65,5 +72,16 @@ public class Register : MonoBehaviour
         }
     }
 
-
+    private bool AreInputsEmpty()
+    {
+        if (string.IsNullOrEmpty(usernameInput.text) || string.IsNullOrEmpty(passwordInput.text))
+        {
+            Debug.Log("Please fill in all fields.");
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

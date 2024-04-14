@@ -10,6 +10,8 @@ public class Login : MonoBehaviour
     public Button loginButton;
     public Button goToRegisterButton;
 
+    public GameObject errorObject; // Referencia al objeto que quieres activar
+
     private string[] credentials;
 
     private void Start()
@@ -53,6 +55,7 @@ public class Login : MonoBehaviour
         else
         {
             Debug.Log("Incorrect credentials");
+            errorObject.SetActive(true); // Activar el objeto de error
         }
     }
 
