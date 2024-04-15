@@ -24,13 +24,13 @@ public class Register : MonoBehaviour
         registerButton.onClick.AddListener(writeStuffToFile);
         goToLoginButton.onClick.AddListener(goToLoginScene);
 
-        if (File.Exists(Application.dataPath + "/credentials.txt"))
+        if (File.Exists(Application.persistentDataPath + "/credentials.txt"))
         {
-            credentials = new ArrayList(File.ReadAllLines(Application.dataPath + "/credentials.txt"));
+            credentials = new ArrayList(File.ReadAllLines(Application.persistentDataPath + "/credentials.txt"));
         }
         else
         {
-            File.WriteAllText(Application.dataPath + "/credentials.txt", "");
+            File.WriteAllText(Application.persistentDataPath + "/credentials.txt", "");
         }
     }
 
@@ -49,7 +49,7 @@ public class Register : MonoBehaviour
 
         bool isExists = false;
 
-        credentials = new ArrayList(File.ReadAllLines(Application.dataPath + "/credentials.txt"));
+        credentials = new ArrayList(File.ReadAllLines(Application.persistentDataPath + "/credentials.txt"));
         foreach (var i in credentials)
         {
             if (i.ToString().Contains(usernameInput.text))
@@ -67,7 +67,7 @@ public class Register : MonoBehaviour
         else
         {
             credentials.Add(usernameInput.text + ":" + passwordInput.text);
-            File.WriteAllLines(Application.dataPath + "/credentials.txt", (String[])credentials.ToArray(typeof(string)));
+            File.WriteAllLines(Application.persistentDataPath + "/credentials.txt", (String[])credentials.ToArray(typeof(string)));
             Debug.Log("Account Registered");
         }
     }
