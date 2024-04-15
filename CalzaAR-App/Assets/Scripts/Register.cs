@@ -47,29 +47,18 @@ public class Register : MonoBehaviour
             return;
         }
 
-        bool isExists = false;
-
-        credentials = new ArrayList(File.ReadAllLines(Application.persistentDataPath + "/credentials.txt"));
-        foreach (var i in credentials)
-        {
-            if (i.ToString().Contains(usernameInput.text))
-            {
-                isExists = true;
-                break;
-            }
-        }
-
-        if (isExists)
+        if (PlayerPrefs.HasKey(usernameInput.text))
         {
             usernameExistsErrorObject.SetActive(true); // Activar el objeto de error de nombre de usuario existente
             Debug.Log($"Username '{usernameInput.text}' already exists");
+            return;
         }
-        else
-        {
-            credentials.Add(usernameInput.text + ":" + passwordInput.text);
-            File.WriteAllLines(Application.persistentDataPath + "/credentials.txt", (String[])credentials.ToArray(typeof(string)));
-            Debug.Log("Account Registered");
-        }
+
+        // Guardar las credenciales en PlayerPrefs
+        PlayerPrefs.SetString(usernameInput.text, passwordInput.text);
+        PlayerPrefs.Save(); // Guardar los cambios
+
+        Debug.Log("Account Registered");
     }
 
     private bool AreInputsEmpty()
