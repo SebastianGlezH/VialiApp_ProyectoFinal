@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro; // Añade este using para usar TextMeshProUGUI
+using UnityEngine.SceneManagement;
+
 
 public class QuizManager : MonoBehaviour
 {
@@ -9,14 +11,51 @@ public class QuizManager : MonoBehaviour
     public GameObject[] options;
     public int currentQuestion;
 
-    public TextMeshProUGUI QuestionTxt; // Cambia UnityEngine.UI.Text a TextMeshProUGUI
+    public GameObject QuizPanel;
+    public GameObject GoPanel;
+    public GameObject BG;
+
+
+
+    public TextMeshProUGUI QuestionTxt;
+    public TextMeshProUGUI ScoreTxt;
+
+    int totalQuestions = 0;
+
+    public int score;
+
+
 
     private void Start()
     {
+        totalQuestions = QnA.Count;
+        GoPanel.SetActive(false);
         generateQuestion();
     }
 
+    public void retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void GameOver()
+    {
+
+        QuizPanel.SetActive(false);
+        GoPanel.SetActive(true);
+        BG.SetActive(true);
+        ScoreTxt.text = score + "/" + totalQuestions;
+
+    }
+
     public void correct()
+    {
+        score += 1;
+        QnA.RemoveAt(currentQuestion);
+        generateQuestion();
+    }
+
+    public void wrong()
     {
         QnA.RemoveAt(currentQuestion);
         generateQuestion();
@@ -27,7 +66,7 @@ public class QuizManager : MonoBehaviour
         for (int i = 0; i < options.Length; i++)
         {
             options[i].GetComponent<AnswerScript>().isCorrect = false;
-            options[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = QnA[currentQuestion].Answer[i]; // Cambia a TextMeshProUGUI
+            options[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = QnA[currentQuestion].Answer[i]; 
 
             if (QnA[currentQuestion].CorrectAnswer == i + 1)
             {
@@ -38,7 +77,7 @@ public class QuizManager : MonoBehaviour
 
     void generateQuestion()
     {
-        if (QnA.Count > 0) // Verifica si la lista tiene al menos una pregunta
+        if (QnA.Count > 0) 
         {
             currentQuestion = Random.Range(0, QnA.Count);
             QuestionTxt.text = QnA[currentQuestion].Question;
@@ -47,7 +86,7 @@ public class QuizManager : MonoBehaviour
         else
         {
             Debug.LogWarning("No hay preguntas disponibles.");
-            // Aquí puedes agregar un manejo adicional, como mostrar un mensaje de error o detener el juego.
+            GameOver();
         }
     }
 }
