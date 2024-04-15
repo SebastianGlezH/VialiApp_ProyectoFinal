@@ -865,11 +865,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: fafc849d-ef17-41ed-992e-4f40f0f361c5
+  cloudProjectId: 4221d8a2-9f2a-4094-825d-6fd1e1809010
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: CalzaAR
-  organizationId: utl-integradora-ll
+  projectName: CalzaAR-App
+  organizationId: angrysebas
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
