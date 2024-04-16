@@ -19,35 +19,14 @@ public class Login : MonoBehaviour
         loginButton.onClick.AddListener(LoginAttempt);
         goToRegisterButton.onClick.AddListener(MoveToRegister);
 
-        if (File.Exists(Application.dataPath + "/credentials.txt"))
-        {
-            // Cargar las credenciales una vez al inicio
-            credentials = File.ReadAllLines(Application.dataPath + "/credentials.txt");
-        }
-        else
-        {
-            Debug.LogError("Credential file doesn't exist");
-        }
+        // No es necesario cargar las credenciales aquí, ya que se cargan al iniciar la aplicación
     }
 
     private void LoginAttempt()
     {
-        bool credentialsCorrect = false;
+        string savedPassword = PlayerPrefs.GetString(usernameInput.text);
 
-        foreach (string credential in credentials)
-        {
-            string[] parts = credential.Split(':');
-            string username = parts[0];
-            string password = parts[1];
-
-            if (username == usernameInput.text && password == passwordInput.text)
-            {
-                credentialsCorrect = true;
-                break;
-            }
-        }
-
-        if (credentialsCorrect)
+        if (savedPassword == passwordInput.text)
         {
             Debug.Log($"Logging in as '{usernameInput.text}'");
             LoadWelcomeScreen();
