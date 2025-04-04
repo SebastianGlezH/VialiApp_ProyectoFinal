@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<QCARConfig>
-  <Tracking>
-    <ImageTarget name="target_calzar" size="0.500000 0.500000" />
-    <ImageTarget name="Target_Zapato_3" size="1.000000 1.293779" />
-    <ImageTarget name="Contro_Animaciones_2" size="0.500000 0.500000" />
-    <ImageTarget name="Control_Animaciones_1" size="1.000000 1.000000" />
-  </Tracking>
-</QCARConfig>
