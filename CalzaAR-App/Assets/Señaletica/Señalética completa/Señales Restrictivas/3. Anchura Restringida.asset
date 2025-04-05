@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d8d51f255be10340b0cb7d749cb80e1, type: 3}
+  m_Name: 3. Anchura Restringida
+  m_EditorClassIdentifier: 
+  tipo: 1
+  imagen: {fileID: 21300000, guid: c5b5f90211f9d8f4d9397e6915afe536, type: 3}
+  nombre: Anchura Restringida
+  descripcion: "El se\xF1alamiento indica el l\xEDmite de anchura de veh\xEDculos
+    para circular en un camino."

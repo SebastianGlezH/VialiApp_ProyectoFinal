@@ -959,12 +959,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoNombre: {fileID: 0}
   textoDescripcion: {fileID: 0}
-  "imagenSe\xF1al": {fileID: 0}
+  imagenSenal: {fileID: 0}
   btnAnterior: {fileID: 0}
   btnSiguiente: {fileID: 0}
   textoProgreso: {fileID: 0}
-  "se\xF1alesPreventivas": []
-  "se\xF1alesRestrictivas": []
+  senalesPreventivas: []
+  senalesRestrictivas: []
 --- !u!1 &1718647046
 GameObject:
   m_ObjectHideFlags: 0

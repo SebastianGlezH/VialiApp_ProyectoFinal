@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d8d51f255be10340b0cb7d749cb80e1, type: 3}
+  m_Name: 2. Altura Restringida
+  m_EditorClassIdentifier: 
+  tipo: 1
+  imagen: {fileID: 21300000, guid: 408f87c576bef104793b5698e356e9ea, type: 3}
+  nombre: Altura Restringida
+  descripcion: "Este tipo de se\xF1al de tr\xE1nsito se utiliza para indicar el l\xEDmite
+    de altura de veh\xEDculos para circular en un camino. Es ocupada en la entrada
+    de los puentes."
