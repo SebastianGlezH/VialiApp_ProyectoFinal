@@ -954,19 +954,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1551821961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5e7689c098a7544a91d076b99e8610f, type: 3}
+  m_Script: {fileID: 11500000, guid: 22e40e5823ee53f41bcfe2d422173788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textoNombre: {fileID: 380435191}
-  textoDescripcion: {fileID: 1936786904}
-  "imagenSe\xF1al": {fileID: 1810468308}
-  btnAnterior: {fileID: 721637134}
-  btnSiguiente: {fileID: 1718647047}
+  textoNombre: {fileID: 0}
+  textoDescripcion: {fileID: 0}
+  "imagenSe\xF1al": {fileID: 0}
+  btnAnterior: {fileID: 0}
+  btnSiguiente: {fileID: 0}
   textoProgreso: {fileID: 0}
-  "se\xF1alesPreventivas":
-  - {fileID: 11400000, guid: cbfc2b45cc3099f40b702d73f4b4e1b5, type: 2}
-  "se\xF1alesRestrictivas":
-  - {fileID: 11400000, guid: 3687864b084b59844b8e774b60000108, type: 2}
+  "se\xF1alesPreventivas": []
+  "se\xF1alesRestrictivas": []
 --- !u!1 &1718647046
 GameObject:
   m_ObjectHideFlags: 0
