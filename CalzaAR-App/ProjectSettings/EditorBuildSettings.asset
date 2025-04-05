@@ -45,6 +45,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Scan 2.unity
     guid: ce2b8614ef0e3e344b1bb5316fc4c479
   m_configObjects:
-    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 341496a38c2d98f48b0aed863bc1567b, type: 2}
-    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 96b8dc5dce191ae46be4e4d9b8a8e9a9, type: 2}
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 772c2da495373bc408930c37e84c786b, type: 2}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 088db123a0580294cbf76e8fc0711add, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 3275139b78ebc4d438de3b17a427e4fb, type: 2}
