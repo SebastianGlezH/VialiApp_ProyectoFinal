@@ -6,64 +6,64 @@ using TMPro;
 public class InfoManager : MonoBehaviour
 {
     [Header("Referencias UI")]
-    public TextMeshProUGUI textoNombre; // Texto para el nombre de la señal
-    public TextMeshProUGUI textoDescripcion; // Texto para la descripción
-    public Image imagenSeñal; // Imagen de la señal
-    public Button btnAnterior; // Botón "Anterior"
-    public Button btnSiguiente; // Botón "Siguiente"
+    public TextMeshProUGUI textoNombre; // Texto para el nombre de la seÃ±al
+    public TextMeshProUGUI textoDescripcion; // Texto para la descripciÃ³n
+    public Image imagenSenal; // Imagen de la seÃ±al
+    public Button btnAnterior; // BotÃ³n "Anterior"
+    public Button btnSiguiente; // BotÃ³n "Siguiente"
     public TextMeshProUGUI textoProgreso; // Texto opcional para "1/10" (Opcional)
 
-    [Header("Datos de Señales")]
-    public SeñalSO[] señalesPreventivas; // Lista de señales preventivas
-    public SeñalSO[] señalesRestrictivas; // Lista de señales restrictivas
+    [Header("Datos de SeÃ±ales")]
+    public SenalSO[] senalesPreventivas; // Lista de seÃ±ales preventivas
+    public SenalSO[] senalesRestrictivas; // Lista de seÃ±ales restrictivas
 
-    private SeñalSO[] señalesActuales; // Señales que se están mostrando actualmente
-    private int indiceActual = 0; // Índice de la señal actual
+    private SenalSO[] senalesActuales; // SeÃ±ales que se estÃ¡n mostrando actualmente
+    private int indiceActual = 0; // Ãndice de la seÃ±al actual
 
     void Start()
     {
         // Cargar el tipo de contenido seleccionado (Preventivas/Restrictivas)
         string tipoContenido = PlayerPrefs.GetString("TipoContenido");
 
-        // Asignar el conjunto de señales correspondiente
-        señalesActuales = (tipoContenido == "Preventivas") ? señalesPreventivas : señalesRestrictivas;
+        // Asignar el conjunto de seÃ±ales correspondiente
+        senalesActuales = (tipoContenido == "Preventivas") ? senalesPreventivas : senalesRestrictivas;
 
         // Configurar listeners de los botones
-        btnAnterior.onClick.AddListener(() => CambiarSeñal(-1));
-        btnSiguiente.onClick.AddListener(() => CambiarSeñal(1));
+        btnAnterior.onClick.AddListener(() => CambiarSenal(-1));
+        btnSiguiente.onClick.AddListener(() => CambiarSenal(1));
 
-        // Mostrar la primera señal
-        MostrarSeñalActual();
+        // Mostrar la primera seÃ±al
+        MostrarSenalActual();
     }
 
-    void MostrarSeñalActual()
+    void MostrarSenalActual()
     {
-        if (señalesActuales.Length == 0) return;
+        if (senalesActuales.Length == 0) return;
 
-        // Obtener la señal actual
-        SeñalSO señal = señalesActuales[indiceActual];
+        // Obtener la seÃ±al actual
+        SenalSO senal = senalesActuales[indiceActual];
 
         // Actualizar UI
-        textoNombre.text = señal.nombre;
-        textoDescripcion.text = señal.descripcion;
-        imagenSeñal.sprite = señal.imagen;
+        textoNombre.text = senal.nombre;
+        textoDescripcion.text = senal.descripcion;
+        imagenSenal.sprite = senal.imagen;
 
         // Actualizar progreso (opcional)
         if (textoProgreso != null)
-            textoProgreso.text = $"{indiceActual + 1}/{señalesActuales.Length}";
+            textoProgreso.text = $"{indiceActual + 1}/{senalesActuales.Length}";
 
         // Actualizar estado de los botones
         btnAnterior.interactable = (indiceActual > 0);
-        btnSiguiente.interactable = (indiceActual < señalesActuales.Length - 1);
+        btnSiguiente.interactable = (indiceActual < senalesActuales.Length - 1);
     }
 
-    void CambiarSeñal(int cambio)
+    void CambiarSenal(int cambio)
     {
-        // Cambiar el índice y asegurarse de que esté dentro de los límites
-        indiceActual = Mathf.Clamp(indiceActual + cambio, 0, señalesActuales.Length - 1);
+        // Cambiar el Ã­ndice y asegurarse de que estÃ¡ dentro de los lÃ­mites
+        indiceActual = Mathf.Clamp(indiceActual + cambio, 0, senalesActuales.Length - 1);
 
-        // Mostrar la nueva señal
-        MostrarSeñalActual();
+        // Mostrar la nueva seÃ±al
+        MostrarSenalActual();
     }
 
     public void VolverAlMenu()

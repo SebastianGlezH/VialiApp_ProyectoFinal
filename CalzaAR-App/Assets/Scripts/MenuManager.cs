@@ -9,19 +9,19 @@ public class MenuManager : MonoBehaviour
     public Button btnTestRestrictivas;
     public Button btnInfoPreventivas;
     public Button btnInfoRestrictivas;
-    public Button btnSalir; // Nuevo botón de salir
+    public Button btnSalir; // Nuevo botï¿½n de salir
 
     void Start()
     {
-        // Configuración de listeners para todos los botones
+        // Configuraciï¿½n de listeners para todos los botones
         btnTestPreventivas.onClick.AddListener(() => CargarTest("Preventivas"));
         btnTestRestrictivas.onClick.AddListener(() => CargarTest("Restrictivas"));
         btnInfoPreventivas.onClick.AddListener(() => CargarInfo("Preventivas"));
         btnInfoRestrictivas.onClick.AddListener(() => CargarInfo("Restrictivas"));
-        btnSalir.onClick.AddListener(SalirDelJuego); // Asigna el método de salida
+        btnSalir.onClick.AddListener(SalirDelJuego); // Asigna el mï¿½todo de salida
     }
 
-    // Métodos para cambiar de escena
+    // Mï¿½todos para cambiar de escena
     public void CargarTest(string tipoTest)
     {
         PlayerPrefs.SetString("TipoContenido", tipoTest);
@@ -34,7 +34,7 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("Escena_Informacion");
     }
 
-    // Nuevo método para salir de la aplicación
+    // Nuevo mï¿½todo para salir de la aplicaciï¿½n
     public void SalirDelJuego()
     {
 #if UNITY_EDITOR
