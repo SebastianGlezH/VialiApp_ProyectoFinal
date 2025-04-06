@@ -1,8 +1,13 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class UIManager : MonoBehaviour
+public class SceneChanger : MonoBehaviour
 {
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
     public void Salir()
     {
         Debug.Log("Saliendo de la aplicación...");
@@ -12,15 +17,5 @@ public class UIManager : MonoBehaviour
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
-    }
-
-    public void MostrarMensaje()
-    {
-        Debug.Log("Mostrando un mensaje...");
-    }
-
-    public void CambiarEscena(string nombreEscena)
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(nombreEscena);
     }
 }
