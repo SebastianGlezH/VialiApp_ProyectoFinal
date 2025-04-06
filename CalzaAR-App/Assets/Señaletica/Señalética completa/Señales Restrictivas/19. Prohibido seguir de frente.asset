@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipo: 1
   imagen: {fileID: 21300000, guid: ffb1c1e7f53166949bccd3cc856d6b30, type: 3}
-  nombre: 19. Prohibido seguir de frente
+  nombre: Prohibido seguir de frente
   descripcion: "La se\xF1al de tr\xE1nsito indica que se proh\xEDbe seguir circulando
     de frente."

@@ -6,44 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/Credits.unity
-    guid: ab7b5247278933f48ad710278716d8b6
-  - enabled: 1
-    path: Assets/Scenes/Perfil.unity
-    guid: b492b34ed97855d4aa1643f112598f51
-  - enabled: 1
     path: Assets/Scenes/Inicio.unity
-    guid: a3321196831d3b44d9128c24235ff649
+    guid: 17b604b978739465e83f914e2ea8116f
   - enabled: 1
-    path: Assets/Scenes/Leccion 1.unity
-    guid: d8675eeea4098664ca36f11c88e9bb40
+    path: Assets/Scenes/SMenu.unity
+    guid: 8f688bed4fae148979b80f24b9fab74d
   - enabled: 1
-    path: Assets/Scenes/Leccion 2.unity
-    guid: 2fe67e09ef9de414db90a57c1a6e7886
+    path: Assets/Scenes/Escena_Informacion.unity
+    guid: fe06042a268a6944693dbdad797f29bc
   - enabled: 1
-    path: Assets/Scenes/Leccion 3.unity
-    guid: 3158d09eb2e582e4c8b16d09ad53f539
-  - enabled: 1
-    path: Assets/Scenes/Quizz.unity
-    guid: c72de5be2c87d9043bb609e6bfe35d51
-  - enabled: 1
-    path: Assets/Scenes/Scan.unity
-    guid: c4ff04954c7dc7041ad4d08f2b20238c
-  - enabled: 1
-    path: Assets/Scenes/Usuario_Login.unity
-    guid: bc5636c31458b9c4d8c12780c29422d7
-  - enabled: 1
-    path: Assets/Scenes/Usuario_Registrar.unity
-    guid: beeb4f48e54c7f24bb55321116400e71
-  - enabled: 1
-    path: Assets/Scenes/Scan 1.unity
-    guid: a88629d2347a9674b8e9e530756229b5
-  - enabled: 1
-    path: Assets/Scenes/Scan 2.unity
-    guid: ce2b8614ef0e3e344b1bb5316fc4c479
+    path: Assets/Scenes/Escena_Tests.unity
+    guid: 2c2ac18d5d53a794ea2778a19746abec
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 772c2da495373bc408930c37e84c786b, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 088db123a0580294cbf76e8fc0711add, type: 2}
