@@ -92,7 +92,7 @@ public class TestManager : MonoBehaviour
 
         PreguntaSO pregunta = preguntasAleatorias[preguntaActual];
 
-        imagenPregunta.sprite = pregunta.imagenSeñal;
+        imagenPregunta.sprite = pregunta.imagenSenal;
         textoPregunta.text = pregunta.pregunta;
         textoProgreso.text = $"Pregunta {preguntaActual + 1}/{preguntasAleatorias.Count}";
 

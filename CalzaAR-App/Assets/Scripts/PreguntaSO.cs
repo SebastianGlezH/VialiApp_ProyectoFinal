@@ -3,8 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NuevaPregunta", menuName = "Senal/Pregunta")]
 public class PreguntaSO : ScriptableObject
 {
-    public Sprite imagenSeñal;        // Imagen de la señal relacionada
+    public Sprite imagenSenal;        // Imagen de la seï¿½al relacionada
     public string pregunta;           // Texto de la pregunta
-    public string[] opciones;        // Opciones de respuesta (mínimo 3)
-    public int respuestaCorrecta;    // Índice de la opción correcta (ej: 0 = opción A)
+    public string[] opciones;        // Opciones de respuesta (mï¿½nimo 3)
+    public int respuestaCorrecta;    // ï¿½ndice de la opciï¿½n correcta (ej: 0 = opciï¿½n A)
 }
