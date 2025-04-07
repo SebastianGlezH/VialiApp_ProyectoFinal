@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Pregunta2
   m_EditorClassIdentifier: 
   "imagenSe\xF1al": {fileID: 21300000, guid: 7fcbf257041579d4aa97fa7ec24affa3, type: 3}
-  pregunta: Que significa?
+  pregunta: "\xBFQu\xE9 significa esta se\xF1al?"
   opciones:
   - Alto total
-  - Stop
-  - Parar
+  - Contracurva
+  - No Parar
   respuestaCorrecta: 0
