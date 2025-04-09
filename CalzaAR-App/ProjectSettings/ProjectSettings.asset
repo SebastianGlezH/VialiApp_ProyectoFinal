@@ -144,8 +144,10 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 0.6
-  preloadedAssets: []
+  bundleVersion: 0.9
+  preloadedAssets:
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 088db123a0580294cbf76e8fc0711add, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -871,14 +873,14 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: fafc849d-ef17-41ed-992e-4f40f0f361c5
+  cloudProjectId: 70ffb186-c66f-4ca7-be66-bafb67bad211
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: CalzaAR
-  organizationId: utl-integradora-ll
+  projectName: VialiApp
+  organizationId: angrysebas
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
   platformRequiresReadableAssets: 0
   virtualTexturingSupportEnabled: 0
-  insecureHttpOption: 0
+  insecureHttpOption: 1

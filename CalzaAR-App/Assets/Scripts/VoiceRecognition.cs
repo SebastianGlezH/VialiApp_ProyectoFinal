@@ -1,42 +1,53 @@
 using UnityEngine;
-using UnityEngine.Windows.Speech;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
 
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
+using UnityEngine.Windows.Speech;
+#endif
+
 public class VoiceRecognition : MonoBehaviour
 {
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
     private KeywordRecognizer keywordRecognizer;
     private Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
+#endif
 
-    [SerializeField] private Image micIcon; // Asigna el icono del micrófono desde el Inspector
-    [SerializeField] private Color listeningColor = Color.white; // Color cuando está escuchando
-    private Color defaultColor; // Guarda el color original del icono
+    [SerializeField] private Image micIcon;
+    [SerializeField] private Color listeningColor = Color.white;
+    private Color defaultColor;
 
-    [SerializeField] private Button[] buttonsToDisable; // Botones que se desactivarán al escuchar
+    [SerializeField] private Button[] buttonsToDisable;
+
+    private AndroidJavaObject speechPlugin;
 
     void Start()
     {
-        // Guarda el color original del icono
         if (micIcon != null)
             defaultColor = micIcon.color;
 
-        // Palabra clave y acción asociada
-        keywords.Add("señales", () =>
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
+        keywords.Add("seÃ±ales", () =>
         {
-            // Cargar la escena SMenu
             SceneManager.LoadScene("SMenu");
         });
 
-        // Configurar el reconocedor
         keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += OnPhraseRecognized;
+#elif UNITY_ANDROID && !UNITY_EDITOR
+        using (var unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+        {
+            var activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+            speechPlugin = new AndroidJavaObject("android.speech.SpeechRecognizer", activity);
+        }
+#endif
     }
 
-    // Método para activar/desactivar el micrófono (llámalo desde el botón)
     public void ToggleMicrophone()
     {
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
         if (keywordRecognizer.IsRunning)
         {
             keywordRecognizer.Stop();
@@ -47,8 +58,13 @@ public class VoiceRecognition : MonoBehaviour
             keywordRecognizer.Start();
             SetMicState(true);
         }
+#elif UNITY_ANDROID && !UNITY_EDITOR
+        StartAndroidVoiceRecognition();
+        SetMicState(true);
+#endif
     }
 
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
     private void OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
         System.Action keywordAction;
@@ -57,15 +73,13 @@ public class VoiceRecognition : MonoBehaviour
             keywordAction.Invoke();
         }
     }
+#endif
 
-    // Cambia el estado del micrófono (escuchando o no)
     private void SetMicState(bool isListening)
     {
-        // Cambia el color del icono
         if (micIcon != null)
             micIcon.color = isListening ? listeningColor : defaultColor;
 
-        // Desactiva otros botones mientras escucha
         foreach (Button button in buttonsToDisable)
         {
             if (button != null)
@@ -73,12 +87,43 @@ public class VoiceRecognition : MonoBehaviour
         }
     }
 
+#if UNITY_ANDROID && !UNITY_EDITOR
+    private void StartAndroidVoiceRecognition()
+    {
+        using (AndroidJavaObject intent = new AndroidJavaObject("android.content.Intent", "android.speech.action.RECOGNIZE_SPEECH"))
+        {
+            intent.Call<AndroidJavaObject>("putExtra", "android.speech.extra.LANGUAGE_MODEL", "free_form");
+            intent.Call<AndroidJavaObject>("putExtra", "android.speech.extra.LANGUAGE", "es-MX");
+
+            using (var unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+            {
+                var activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+                activity.Call("startActivityForResult", intent, 10); // 10 = request code
+            }
+        }
+    }
+
+    // Este mÃ©todo es llamado desde Android con el resultado (debes usar un plugin si quieres esto)
+    public void OnSpeechResult(string recognizedText)
+    {
+        Debug.Log("Texto reconocido: " + recognizedText);
+        if (recognizedText.ToLower().Contains("seÃ±ales"))
+        {
+            SceneManager.LoadScene("SMenu");
+        }
+
+        SetMicState(false);
+    }
+#endif
+
     void OnDestroy()
     {
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
         if (keywordRecognizer != null && keywordRecognizer.IsRunning)
         {
             keywordRecognizer.Stop();
             keywordRecognizer.Dispose();
         }
+#endif
     }
 }
