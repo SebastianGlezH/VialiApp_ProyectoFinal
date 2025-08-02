@@ -2872,7 +2872,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageDisplay: {fileID: 593016246}
-  imageList: []
+  imageList:
+  - {fileID: 21300000, guid: 897800dfd2528472f86036549adf750e, type: 3}
   changeInterval: 3
 --- !u!4 &2143104018
 Transform:
