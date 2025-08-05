@@ -8,25 +8,39 @@ public class CrearBD : MonoBehaviour
 
     void Start()
     {
-        string dbPath = Path.Combine(Application.persistentDataPath, "gamificacion.db");
-        Debug.Log("Ruta DB: " + dbPath);
+        string dbName = "gamificacion.db";
+        string dbPath = Path.Combine(Application.persistentDataPath, dbName);
+
+        if (!File.Exists(dbPath))
+        {
+            Debug.Log("Copiando base de datos desde StreamingAssets...");
+
+            string sourcePath = Path.Combine(Application.streamingAssetsPath, dbName);
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+            UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get(sourcePath);
+            www.SendWebRequest();
+            while (!www.isDone) { }
+            if (string.IsNullOrEmpty(www.error))
+            {
+                File.WriteAllBytes(dbPath, www.downloadHandler.data);
+                Debug.Log("Base copiada correctamente a: " + dbPath);
+            }
+            else
+            {
+                Debug.LogError("Error copiando la base: " + www.error);
+            }
+#else
+            File.Copy(sourcePath, dbPath);
+            Debug.Log("Base copiada correctamente a: " + dbPath);
+#endif
+        }
+        else
+        {
+            Debug.Log("Base ya existe en: " + dbPath);
+        }
 
         db = new SQLiteConnection(dbPath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create);
-
-        // Crea la tabla solo si no existe
         db.CreateTable<Usuario>();
-
-        // Opcional: Inserta un usuario de prueba solo si no existe ninguno
-        if (db.Table<Usuario>().Count() == 0)
-        {
-            var usuario = new Usuario
-            {
-                usuario = "diego",
-                pass = "1234",
-                nivel = 1
-            };
-            db.Insert(usuario);
-            Debug.Log("Usuario inicial insertado");
-        }
     }
 }

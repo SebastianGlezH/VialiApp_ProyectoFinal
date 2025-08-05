@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ed7387a0f934edd8df1c735f34efca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Inicio
+  nextSceneName: Login
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
