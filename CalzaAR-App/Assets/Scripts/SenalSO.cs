@@ -6,16 +6,16 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NuevaSenal", menuName = "Senaletica/Senal")]
 public class SenalSO : ScriptableObject
 {
-    public enum TipoSenal { Preventiva, Restrictiva }
+    public enum TipoSenal { Preventiva, Restrictiva, Informativas }
 
     [Header("Tipo de Senal")]
     public TipoSenal tipo;
 
     [Header("Contenido Visual")]
-    public Sprite imagen;  // Arrastra aquí el Sprite de la señal
-    public string nombre;  // Ej: "Pare", "Ceda el Paso"
+    public Sprite imagen;   // Arrastra aquí el Sprite de la señal
+    public string nombre;   // Ej: "Pare", "Ceda el Paso"
 
     [Header("Descripción")]
-    [TextArea(3, 5)]       // Caja de texto multilínea en el Inspector
+    [TextArea(3, 5)]        // Caja de texto multilínea en el Inspector
     public string descripcion;
 }

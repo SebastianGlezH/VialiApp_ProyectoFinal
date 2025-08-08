@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d8d51f255be10340b0cb7d749cb80e1, type: 3}
+  m_Name: 8. Comedor al aire libre
+  m_EditorClassIdentifier: 
+  tipo: 0
+  imagen: {fileID: 21300000, guid: 5d8a17bbbac12de4da37601cd852bb9f, type: 3}
+  nombre: Comedor al aire libre
+  descripcion: "Se\xF1ala una zona de picnic o un \xE1rea equipada con mesas y bancos.
+    Proporciona un lugar para comer y descansar."
