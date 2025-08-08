@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d8d51f255be10340b0cb7d749cb80e1, type: 3}
+  m_Name: 6. Cascada
+  m_EditorClassIdentifier: 
+  tipo: 0
+  imagen: {fileID: 21300000, guid: 29e5ea165e66fd943a29678f1abef7d3, type: 3}
+  nombre: Cascada
+  descripcion: "Advierte sobre la cercan\xEDa de una cascada. Gu\xEDa a los turistas
+    hacia un punto de inter\xE9s natural."
