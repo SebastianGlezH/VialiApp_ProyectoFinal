@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d8d51f255be10340b0cb7d749cb80e1, type: 3}
-  m_Name: 15.
+  m_Name: 13. Hospedaje
   m_EditorClassIdentifier: 
-  tipo: 0
-  imagen: {fileID: 0}
-  nombre: 
-  descripcion: 
+  tipo: 2
+  imagen: {fileID: 21300000, guid: 8875dab3cfcb07847a0b126f8ad24dda, type: 3}
+  nombre: Hospedaje
+  descripcion: "Muestra la ubicaci\xF3n de un hotel, motel u otro tipo de alojamiento.
+    Es una gu\xEDa esencial para los viajeros que buscan un lugar para pernoctar."

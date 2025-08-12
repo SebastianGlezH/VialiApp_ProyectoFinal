@@ -7,25 +7,35 @@ public class SMenuManager : MonoBehaviour
     [Header("Botones")]
     public Button btnPreventivas;
     public Button btnRestrictivas;
-    public Button btnInformativas;
-    public Button btnTuristicas;
+    public Button btnInformativas;  // Botón de Informativas (sin Turísticas)
 
     [Header("Colores")]
-    public Color colorBloqueado = Color.gray;  // Color cuando el botón está bloqueado
-    public Color colorActivo = Color.white;    // Color normal (puedes ajustarlo en el Inspector)
+    public Color colorBloqueado = Color.gray;
+    public Color colorActivo = Color.white;
 
     void Start()
     {
-        // Inicializar los botones según el progreso guardado
+        // Configurar listeners para cada botón
+        btnPreventivas.onClick.AddListener(() => CargarInformacion("Preventivas"));
+        btnRestrictivas.onClick.AddListener(() => CargarInformacion("Restrictivas"));
+        btnInformativas.onClick.AddListener(() => CargarInformacion("Informativas"));
+
+        // Inicializar estado de los botones
         ActualizarBotones();
     }
 
-    // Método principal para actualizar el estado de los botones
+    // Método para cargar la escena de información
+    void CargarInformacion(string tipoContenido)
+    {
+        PlayerPrefs.SetString("TipoContenido", tipoContenido);
+        SceneManager.LoadScene("Escena_Informacion");
+    }
+
     private void ActualizarBotones()
     {
         int leccionCompletada = PlayerPrefs.GetInt("LeccionCompletada", 0);
 
-        // Preventivas siempre está activa
+        // Preventivas siempre activa
         btnPreventivas.interactable = true;
         btnPreventivas.image.color = colorActivo;
 
@@ -36,37 +46,25 @@ public class SMenuManager : MonoBehaviour
         // Informativas
         btnInformativas.interactable = (leccionCompletada >= 2);
         btnInformativas.image.color = btnInformativas.interactable ? colorActivo : colorBloqueado;
-
-        // Turísticas
-        btnTuristicas.interactable = (leccionCompletada >= 3);
-        btnTuristicas.image.color = btnTuristicas.interactable ? colorActivo : colorBloqueado;
     }
 
-    // Método para llamar cuando se completa una lección
     public void CompletarLeccion(int leccionIndex)
     {
         PlayerPrefs.SetInt("LeccionCompletada", leccionIndex);
-        PlayerPrefs.Save(); // Guardar cambios
-
-        // Actualizar botones (opcional: recargar la escena si prefieres)
+        PlayerPrefs.Save();
         ActualizarBotones();
     }
 
-    // --- Ejemplos de cómo llamar a CompletarLeccion ---
-    // Desde otros scripts o eventos de Unity (ej: al finalizar una lección):
-
+    // Métodos para completar lecciones
     public void OnLeccionPreventivasCompletada()
     {
-        CompletarLeccion(1); // Desbloquea "Restrictivas"
+        CompletarLeccion(1); // Desbloquea Restrictivas
     }
 
     public void OnLeccionRestrictivasCompletada()
     {
-        CompletarLeccion(2); // Desbloquea "Informativas"
+        CompletarLeccion(2); // Desbloquea Informativas (último nivel)
     }
 
-    public void OnLeccionInformativasCompletada()
-    {
-        CompletarLeccion(3); // Desbloquea "Turísticas"
-    }
+    // Eliminado OnLeccionInformativasCompletada() ya que es el último nivel
 }

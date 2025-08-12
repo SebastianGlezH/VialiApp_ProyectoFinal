@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d8d51f255be10340b0cb7d749cb80e1, type: 3}
-  m_Name: 16.
+  m_Name: "28. Zona tur\xEDstica"
   m_EditorClassIdentifier: 
-  tipo: 0
-  imagen: {fileID: 0}
-  nombre: 
-  descripcion: 
+  tipo: 2
+  imagen: {fileID: 21300000, guid: 9a854d88668e2424fabe0400ca9c5306, type: 3}
+  nombre: "Zona tur\xEDstica"
+  descripcion: "Se\xF1ala la direcci\xF3n o ubicaci\xF3n de un \xE1rea de inter\xE9s
+    tur\xEDstico general. Gu\xEDa a los visitantes hacia el coraz\xF3n de las atracciones
+    locales."

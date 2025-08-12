@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d8d51f255be10340b0cb7d749cb80e1, type: 3}
-  m_Name: 14.
+  m_Name: 19. Parque nacional
   m_EditorClassIdentifier: 
-  tipo: 0
-  imagen: {fileID: 0}
-  nombre: 
-  descripcion: 
+  tipo: 2
+  imagen: {fileID: 21300000, guid: 38caa417c2435c34388f59faf94f67f5, type: 3}
+  nombre: Parque nacional
+  descripcion: "Se\xF1ala la entrada o la proximidad de un parque nacional. Advierte
+    sobre un \xE1rea protegida de gran valor ecol\xF3gico."

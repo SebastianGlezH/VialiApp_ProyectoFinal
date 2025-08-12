@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d8d51f255be10340b0cb7d749cb80e1, type: 3}
-  m_Name: 13.
+  m_Name: 15. Monumento religioso
   m_EditorClassIdentifier: 
-  tipo: 0
-  imagen: {fileID: 0}
-  nombre: 
-  descripcion: 
+  tipo: 2
+  imagen: {fileID: 21300000, guid: 2646f953cbb8a5148954508a64d04d0f, type: 3}
+  nombre: Monumento religioso
+  descripcion: "Se\xF1ala la ubicaci\xF3n de una iglesia, capilla o monumento de
+    car\xE1cter religioso. Gu\xEDa a los visitantes interesados en el patrimonio
+    cultural y espiritual."

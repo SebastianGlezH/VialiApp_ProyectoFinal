@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d8d51f255be10340b0cb7d749cb80e1, type: 3}
-  m_Name: 7. Caseta Telefonica
+  m_Name: 17. Oficina de correos
   m_EditorClassIdentifier: 
   tipo: 2
-  imagen: {fileID: 21300000, guid: b79bd95c97d97004088f626d4128b7cc, type: 3}
-  nombre: "Caseta Telef\xF3nica"
-  descripcion: "Indica la ubicaci\xF3n de un tel\xE9fono p\xFAblico, \xFAtil en zonas
-    con poca cobertura celular. Es un servicio b\xE1sico para la comunicaci\xF3n."
+  imagen: {fileID: 21300000, guid: 7365454b7b6fa4c42bc2db0095ecfbb7, type: 3}
+  nombre: Oficina de correos
+  descripcion: "Muestra la ubicaci\xF3n de una oficina de correos. Es \xFAtil para
+    quienes necesitan enviar correspondencia o paquetes."

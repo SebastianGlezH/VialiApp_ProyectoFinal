@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8d51f255be10340b0cb7d749cb80e1, type: 3}
   m_Name: 6. Cascada
   m_EditorClassIdentifier: 
-  tipo: 0
+  tipo: 2
   imagen: {fileID: 21300000, guid: 29e5ea165e66fd943a29678f1abef7d3, type: 3}
   nombre: Cascada
   descripcion: "Advierte sobre la cercan\xEDa de una cascada. Gu\xEDa a los turistas

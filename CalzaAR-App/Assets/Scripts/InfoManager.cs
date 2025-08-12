@@ -12,25 +12,36 @@ public class InfoManager : MonoBehaviour
     public Button btnAnterior;
     public Button btnSiguiente;
     public TextMeshProUGUI textoProgreso;
-    public Button btnFinalizarLeccion; // Nuevo botón
+    public Button btnFinalizarLeccion;
 
     [Header("Datos de Señales")]
     public SenalSO[] senalesPreventivas;
     public SenalSO[] senalesRestrictivas;
+    public SenalSO[] senalesInformativas; // Nuevo array para señales informativas
 
     private SenalSO[] senalesActuales;
     private int indiceActual = 0;
 
     void Start()
     {
+        // Cargar el tipo de contenido seleccionado
         string tipoContenido = PlayerPrefs.GetString("TipoContenido");
-        senalesActuales = (tipoContenido == "Preventivas") ? senalesPreventivas : senalesRestrictivas;
 
+        // Asignar el conjunto de señales correspondiente
+        senalesActuales = tipoContenido switch
+        {
+            "Preventivas" => senalesPreventivas,
+            "Restrictivas" => senalesRestrictivas,
+            "Informativas" => senalesInformativas,
+            _ => senalesPreventivas
+        };
+
+        // Configurar listeners
         btnAnterior.onClick.AddListener(() => CambiarSenal(-1));
         btnSiguiente.onClick.AddListener(() => CambiarSenal(1));
-        btnFinalizarLeccion.onClick.AddListener(OnFinalizarLeccion); // Nuevo listener
+        btnFinalizarLeccion.onClick.AddListener(OnFinalizarLeccion);
 
-        // Configuración inicial del botón
+        // Configurar botón de finalizar
         btnFinalizarLeccion.gameObject.SetActive(false);
         btnFinalizarLeccion.interactable = false;
 
@@ -46,6 +57,7 @@ public class InfoManager : MonoBehaviour
         textoDescripcion.text = senal.descripcion;
         imagenSenal.sprite = senal.imagen;
 
+        // Mostrar progreso (ej: "1/5")
         if (textoProgreso != null)
             textoProgreso.text = $"{indiceActual + 1}/{senalesActuales.Length}";
 
@@ -65,34 +77,29 @@ public class InfoManager : MonoBehaviour
         MostrarSenalActual();
     }
 
-    // Nuevo método para finalizar lección
     void OnFinalizarLeccion()
     {
         string tipoContenido = PlayerPrefs.GetString("TipoContenido");
 
-        // Actualizar progreso según el tipo de lección
+        // Actualizar progreso según el tipo de lección completada
         if (tipoContenido == "Preventivas")
         {
-            PlayerPrefs.SetInt("LeccionCompletada", 1); // Desbloquea Restrictivas
+            FindObjectOfType<SMenuManager>().OnLeccionPreventivasCompletada();
         }
         else if (tipoContenido == "Restrictivas")
         {
-            PlayerPrefs.SetInt("LeccionCompletada", 2); // Desbloquea Informativas
+            FindObjectOfType<SMenuManager>().OnLeccionRestrictivasCompletada();
         }
-        // Agrega más condiciones si tienes otros tipos
+        // No necesitamos caso para Informativas pues es el último nivel
 
-        PlayerPrefs.Save();
-
-        // Opcional: Efecto visual antes de cambiar de escena
-        StartCoroutine(RegresarAlMenuConRetraso(0.5f));
+        // Opcional: Efecto visual de confirmación
+        btnFinalizarLeccion.image.color = Color.green;
+        Invoke("RegresarAlMenu", 0.5f);
     }
 
-    System.Collections.IEnumerator RegresarAlMenuConRetraso(float delay)
+    void RegresarAlMenu()
     {
-        // Ejemplo: Cambiar color del botón para confirmación visual
-        btnFinalizarLeccion.image.color = Color.green;
-        yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene("SMenu"); // O "Escena_Menu" si prefieres
+        SceneManager.LoadScene("SMenu");
     }
 
     public void VolverAlMenu()

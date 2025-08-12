@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d8d51f255be10340b0cb7d749cb80e1, type: 3}
-  m_Name: 7. Caseta Telefonica
+  m_Name: "16. Nataci\xF3n"
   m_EditorClassIdentifier: 
   tipo: 2
-  imagen: {fileID: 21300000, guid: b79bd95c97d97004088f626d4128b7cc, type: 3}
-  nombre: "Caseta Telef\xF3nica"
-  descripcion: "Indica la ubicaci\xF3n de un tel\xE9fono p\xFAblico, \xFAtil en zonas
-    con poca cobertura celular. Es un servicio b\xE1sico para la comunicaci\xF3n."
+  imagen: {fileID: 21300000, guid: ad8e4d846e0133341880a08122435633, type: 3}
+  nombre: "Nataci\xF3n"
+  descripcion: "Indica una zona designada y segura para la pr\xE1ctica de la nataci\xF3n.
+    Se utiliza en playas, lagos o piscinas."

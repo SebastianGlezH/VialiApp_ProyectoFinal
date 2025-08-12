@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8d51f255be10340b0cb7d749cb80e1, type: 3}
   m_Name: "9. Estaci\xF3n de ferrocarriles"
   m_EditorClassIdentifier: 
-  tipo: 0
+  tipo: 2
   imagen: {fileID: 21300000, guid: 49bab1a8629083843b2b3531ef729dd7, type: 3}
   nombre: "Estaci\xF3n de Ferrocarriles"
   descripcion: "Indica la ubicaci\xF3n de una estaci\xF3n de tren. Es vital para

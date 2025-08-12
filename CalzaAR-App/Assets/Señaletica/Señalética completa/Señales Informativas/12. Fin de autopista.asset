@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d8d51f255be10340b0cb7d749cb80e1, type: 3}
-  m_Name: 12.
+  m_Name: 12. Fin de autopista
   m_EditorClassIdentifier: 
-  tipo: 0
-  imagen: {fileID: 0}
-  nombre: 
-  descripcion: 
+  tipo: 2
+  imagen: {fileID: 21300000, guid: ede16ec514ada064f848ba3a129a3f17, type: 3}
+  nombre: Fin de autopista
+  descripcion: "Se\xF1al de tr\xE1nsito que indica el t\xE9rmino de una v\xEDa de
+    alta velocidad. Advierte a los conductores sobre cambios en el tr\xE1fico y la
+    velocidad."

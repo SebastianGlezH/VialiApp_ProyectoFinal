@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8d51f255be10340b0cb7d749cb80e1, type: 3}
   m_Name: 4. Buceo
   m_EditorClassIdentifier: 
-  tipo: 0
+  tipo: 2
   imagen: {fileID: 21300000, guid: a79e2d0b4e723384ea3aa3385fdb4989, type: 3}
   nombre: Buceo
   descripcion: "Indica una zona apta para la pr\xE1ctica del buceo o la presencia

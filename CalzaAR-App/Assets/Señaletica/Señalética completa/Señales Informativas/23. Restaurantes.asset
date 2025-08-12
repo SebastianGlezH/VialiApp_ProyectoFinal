@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d8d51f255be10340b0cb7d749cb80e1, type: 3}
-  m_Name: 18.
+  m_Name: 23. Restaurantes
   m_EditorClassIdentifier: 
-  tipo: 0
-  imagen: {fileID: 0}
-  nombre: 
-  descripcion: 
+  tipo: 2
+  imagen: {fileID: 21300000, guid: cc9b0527cfc214541841b2c6571f0ebb, type: 3}
+  nombre: Restaurantes
+  descripcion: "Indica la presencia de restaurantes o una zona de comida. Gu\xEDa
+    a los viajeros que buscan un lugar para alimentarse."

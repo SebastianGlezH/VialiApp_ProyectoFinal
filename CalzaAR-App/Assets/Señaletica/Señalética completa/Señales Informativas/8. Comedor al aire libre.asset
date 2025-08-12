@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8d51f255be10340b0cb7d749cb80e1, type: 3}
   m_Name: 8. Comedor al aire libre
   m_EditorClassIdentifier: 
-  tipo: 0
+  tipo: 2
   imagen: {fileID: 21300000, guid: 5d8a17bbbac12de4da37601cd852bb9f, type: 3}
   nombre: Comedor al aire libre
   descripcion: "Se\xF1ala una zona de picnic o un \xE1rea equipada con mesas y bancos.

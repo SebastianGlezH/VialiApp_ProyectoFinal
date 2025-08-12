@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d8d51f255be10340b0cb7d749cb80e1, type: 3}
-  m_Name: 11.
+  m_Name: 22. Primeros auxilios
   m_EditorClassIdentifier: 
-  tipo: 0
-  imagen: {fileID: 0}
-  nombre: 
-  descripcion: 
+  tipo: 2
+  imagen: {fileID: 21300000, guid: a6bf5c6750198b843b2c2a960e5726f3, type: 3}
+  nombre: Primeros auxilios
+  descripcion: "Muestra la ubicaci\xF3n de un puesto de primeros auxilios. Es una
+    se\xF1al vital para guiar a las personas en caso de emergencia m\xE9dica."

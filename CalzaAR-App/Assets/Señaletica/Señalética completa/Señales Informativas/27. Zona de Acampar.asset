@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d8d51f255be10340b0cb7d749cb80e1, type: 3}
-  m_Name: 7. Caseta Telefonica
+  m_Name: 27. Zona de Acampar
   m_EditorClassIdentifier: 
   tipo: 2
-  imagen: {fileID: 21300000, guid: b79bd95c97d97004088f626d4128b7cc, type: 3}
-  nombre: "Caseta Telef\xF3nica"
-  descripcion: "Indica la ubicaci\xF3n de un tel\xE9fono p\xFAblico, \xFAtil en zonas
-    con poca cobertura celular. Es un servicio b\xE1sico para la comunicaci\xF3n."
+  imagen: {fileID: 21300000, guid: 74ab56d620c9d154a939fc2b6317a0cb, type: 3}
+  nombre: Zona de Acampar
+  descripcion: "Indica un \xE1rea designada para acampar. Gu\xEDa a los campistas
+    hacia un lugar seguro para pasar la noche."
