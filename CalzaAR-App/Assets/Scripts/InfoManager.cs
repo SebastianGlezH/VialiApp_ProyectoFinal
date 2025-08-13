@@ -17,17 +17,15 @@ public class InfoManager : MonoBehaviour
     [Header("Datos de Señales")]
     public SenalSO[] senalesPreventivas;
     public SenalSO[] senalesRestrictivas;
-    public SenalSO[] senalesInformativas; // Nuevo array para señales informativas
+    public SenalSO[] senalesInformativas;
 
     private SenalSO[] senalesActuales;
     private int indiceActual = 0;
 
     void Start()
     {
-        // Cargar el tipo de contenido seleccionado
         string tipoContenido = PlayerPrefs.GetString("TipoContenido");
 
-        // Asignar el conjunto de señales correspondiente
         senalesActuales = tipoContenido switch
         {
             "Preventivas" => senalesPreventivas,
@@ -36,12 +34,10 @@ public class InfoManager : MonoBehaviour
             _ => senalesPreventivas
         };
 
-        // Configurar listeners
         btnAnterior.onClick.AddListener(() => CambiarSenal(-1));
         btnSiguiente.onClick.AddListener(() => CambiarSenal(1));
         btnFinalizarLeccion.onClick.AddListener(OnFinalizarLeccion);
 
-        // Configurar botón de finalizar
         btnFinalizarLeccion.gameObject.SetActive(false);
         btnFinalizarLeccion.interactable = false;
 
@@ -57,15 +53,12 @@ public class InfoManager : MonoBehaviour
         textoDescripcion.text = senal.descripcion;
         imagenSenal.sprite = senal.imagen;
 
-        // Mostrar progreso (ej: "1/5")
         if (textoProgreso != null)
             textoProgreso.text = $"{indiceActual + 1}/{senalesActuales.Length}";
 
-        // Activar/desactivar botones de navegación
         btnAnterior.interactable = (indiceActual > 0);
         btnSiguiente.interactable = (indiceActual < senalesActuales.Length - 1);
 
-        // Mostrar "Finalizar Lección" solo en la última señal
         bool esUltimaSenal = (indiceActual == senalesActuales.Length - 1);
         btnFinalizarLeccion.gameObject.SetActive(esUltimaSenal);
         btnFinalizarLeccion.interactable = esUltimaSenal;
@@ -81,18 +74,22 @@ public class InfoManager : MonoBehaviour
     {
         string tipoContenido = PlayerPrefs.GetString("TipoContenido");
 
-        // Actualizar progreso según el tipo de lección completada
-        if (tipoContenido == "Preventivas")
+        if (SMenuManager.Instance != null)
         {
-            FindObjectOfType<SMenuManager>().OnLeccionPreventivasCompletada();
+            if (tipoContenido == "Preventivas")
+            {
+                SMenuManager.Instance.CompletarLeccion(1);
+            }
+            else if (tipoContenido == "Restrictivas")
+            {
+                SMenuManager.Instance.CompletarLeccion(2);
+            }
+            else if (tipoContenido == "Informativas")
+            {
+                SMenuManager.Instance.CompletarLeccion(3);
+            }
         }
-        else if (tipoContenido == "Restrictivas")
-        {
-            FindObjectOfType<SMenuManager>().OnLeccionRestrictivasCompletada();
-        }
-        // No necesitamos caso para Informativas pues es el último nivel
 
-        // Opcional: Efecto visual de confirmación
         btnFinalizarLeccion.image.color = Color.green;
         Invoke("RegresarAlMenu", 0.5f);
     }

@@ -4,31 +4,42 @@ using UnityEngine.SceneManagement;
 
 public class SMenuManager : MonoBehaviour
 {
+    public static SMenuManager Instance { get; private set; }
+
     [Header("Botones")]
     public Button btnPreventivas;
     public Button btnRestrictivas;
-    public Button btnInformativas;  // Botón de Informativas (sin Turísticas)
+    public Button btnInformativas;
+    public Button btnTestGeneral;
 
     [Header("Colores")]
     public Color colorBloqueado = Color.gray;
     public Color colorActivo = Color.white;
 
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
+        Debug.Log("Progreso guardado al iniciar: " + PlayerPrefs.GetInt("LeccionCompletada", 0));
+
         // Configurar listeners para cada botón
         btnPreventivas.onClick.AddListener(() => CargarInformacion("Preventivas"));
         btnRestrictivas.onClick.AddListener(() => CargarInformacion("Restrictivas"));
         btnInformativas.onClick.AddListener(() => CargarInformacion("Informativas"));
+        btnTestGeneral.onClick.AddListener(() => CargarTestGeneral());
 
-        // Inicializar estado de los botones
         ActualizarBotones();
-    }
-
-    // Método para cargar la escena de información
-    void CargarInformacion(string tipoContenido)
-    {
-        PlayerPrefs.SetString("TipoContenido", tipoContenido);
-        SceneManager.LoadScene("Escena_Informacion");
     }
 
     private void ActualizarBotones()
@@ -39,32 +50,43 @@ public class SMenuManager : MonoBehaviour
         btnPreventivas.interactable = true;
         btnPreventivas.image.color = colorActivo;
 
-        // Restrictivas
+        // Restrictivas se activa con el nivel 1
         btnRestrictivas.interactable = (leccionCompletada >= 1);
         btnRestrictivas.image.color = btnRestrictivas.interactable ? colorActivo : colorBloqueado;
 
-        // Informativas
+        // Informativas se activa con el nivel 2
         btnInformativas.interactable = (leccionCompletada >= 2);
         btnInformativas.image.color = btnInformativas.interactable ? colorActivo : colorBloqueado;
+
+        // Test General se activa con el nivel 3
+        if (btnTestGeneral != null)
+        {
+            btnTestGeneral.gameObject.SetActive(leccionCompletada >= 3);
+        }
+    }
+
+    public void CargarInformacion(string tipoContenido)
+    {
+        PlayerPrefs.SetString("TipoContenido", tipoContenido);
+        SceneManager.LoadScene("Escena_Informacion");
+    }
+
+    public void CargarTestGeneral()
+    {
+        PlayerPrefs.SetString("TipoContenido", "TestGeneral");
+        SceneManager.LoadScene("Escena_Tests");
     }
 
     public void CompletarLeccion(int leccionIndex)
     {
-        PlayerPrefs.SetInt("LeccionCompletada", leccionIndex);
-        PlayerPrefs.Save();
+        int nivelActual = PlayerPrefs.GetInt("LeccionCompletada", 0);
+
+        if (leccionIndex > nivelActual)
+        {
+            PlayerPrefs.SetInt("LeccionCompletada", leccionIndex);
+            PlayerPrefs.Save();
+            Debug.Log("Progreso actualizado a nivel: " + leccionIndex);
+        }
         ActualizarBotones();
     }
-
-    // Métodos para completar lecciones
-    public void OnLeccionPreventivasCompletada()
-    {
-        CompletarLeccion(1); // Desbloquea Restrictivas
-    }
-
-    public void OnLeccionRestrictivasCompletada()
-    {
-        CompletarLeccion(2); // Desbloquea Informativas (último nivel)
-    }
-
-    // Eliminado OnLeccionInformativasCompletada() ya que es el último nivel
 }
