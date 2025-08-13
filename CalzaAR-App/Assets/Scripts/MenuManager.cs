@@ -4,43 +4,36 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    // Botones asignables desde el Inspector
-    public Button btnTestPreventivas;
-    public Button btnTestRestrictivas;
-    public Button btnInfoPreventivas;
-    public Button btnInfoRestrictivas;
-    public Button btnSalir; // Nuevo bot�n de salir
+    // Botones del menú principal
+    public Button btnSenalizacion; // Botón para ir al menú de señalización
+    public Button btnSalir;       // Botón para salir del juego
 
     void Start()
     {
-        // Configuraci�n de listeners para todos los botones
-        btnTestPreventivas.onClick.AddListener(() => CargarTest("Preventivas"));
-        btnTestRestrictivas.onClick.AddListener(() => CargarTest("Restrictivas"));
-        btnInfoPreventivas.onClick.AddListener(() => CargarInfo("Preventivas"));
-        btnInfoRestrictivas.onClick.AddListener(() => CargarInfo("Restrictivas"));
-        btnSalir.onClick.AddListener(SalirDelJuego); // Asigna el m�todo de salida
+        // Asigna el listener al botón de Señalización si está asignado
+        if (btnSenalizacion != null)
+        {
+            btnSenalizacion.onClick.AddListener(CargarSMenu);
+        }
+
+        // Asigna el listener al botón de Salir si está asignado
+        if (btnSalir != null)
+        {
+            btnSalir.onClick.AddListener(SalirDelJuego);
+        }
     }
 
-    // M�todos para cambiar de escena
-    public void CargarTest(string tipoTest)
+    public void CargarSMenu()
     {
-        PlayerPrefs.SetString("TipoContenido", tipoTest);
-        SceneManager.LoadScene("Escena_Tests");
+        SceneManager.LoadScene("SMenu");
     }
 
-    public void CargarInfo(string tipoInfo)
-    {
-        PlayerPrefs.SetString("TipoContenido", tipoInfo);
-        SceneManager.LoadScene("Escena_Informacion");
-    }
-
-    // Nuevo m�todo para salir de la aplicaci�n
     public void SalirDelJuego()
     {
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false; // Cierra en el Editor
+        UnityEditor.EditorApplication.isPlaying = false;
 #else
-            Application.Quit(); // Cierra en la build final
+        Application.Quit();
 #endif
     }
 }

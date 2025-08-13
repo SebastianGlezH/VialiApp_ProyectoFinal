@@ -34,12 +34,15 @@ public class InfoManager : MonoBehaviour
             _ => senalesPreventivas
         };
 
-        btnAnterior.onClick.AddListener(() => CambiarSenal(-1));
-        btnSiguiente.onClick.AddListener(() => CambiarSenal(1));
-        btnFinalizarLeccion.onClick.AddListener(OnFinalizarLeccion);
+        if (btnAnterior != null) btnAnterior.onClick.AddListener(() => CambiarSenal(-1));
+        if (btnSiguiente != null) btnSiguiente.onClick.AddListener(() => CambiarSenal(1));
+        if (btnFinalizarLeccion != null) btnFinalizarLeccion.onClick.AddListener(OnFinalizarLeccion);
 
-        btnFinalizarLeccion.gameObject.SetActive(false);
-        btnFinalizarLeccion.interactable = false;
+        if (btnFinalizarLeccion != null)
+        {
+            btnFinalizarLeccion.gameObject.SetActive(false);
+            btnFinalizarLeccion.interactable = false;
+        }
 
         MostrarSenalActual();
     }
@@ -56,12 +59,15 @@ public class InfoManager : MonoBehaviour
         if (textoProgreso != null)
             textoProgreso.text = $"{indiceActual + 1}/{senalesActuales.Length}";
 
-        btnAnterior.interactable = (indiceActual > 0);
-        btnSiguiente.interactable = (indiceActual < senalesActuales.Length - 1);
+        if (btnAnterior != null) btnAnterior.interactable = (indiceActual > 0);
+        if (btnSiguiente != null) btnSiguiente.interactable = (indiceActual < senalesActuales.Length - 1);
 
         bool esUltimaSenal = (indiceActual == senalesActuales.Length - 1);
-        btnFinalizarLeccion.gameObject.SetActive(esUltimaSenal);
-        btnFinalizarLeccion.interactable = esUltimaSenal;
+        if (btnFinalizarLeccion != null)
+        {
+            btnFinalizarLeccion.gameObject.SetActive(esUltimaSenal);
+            btnFinalizarLeccion.interactable = esUltimaSenal;
+        }
     }
 
     void CambiarSenal(int cambio)
@@ -73,25 +79,24 @@ public class InfoManager : MonoBehaviour
     void OnFinalizarLeccion()
     {
         string tipoContenido = PlayerPrefs.GetString("TipoContenido");
+        int nuevoNivel = 0;
 
-        if (SMenuManager.Instance != null)
+        if (tipoContenido == "Preventivas") nuevoNivel = 2;
+        else if (tipoContenido == "Restrictivas") nuevoNivel = 3;
+        else if (tipoContenido == "Informativas") nuevoNivel = 4;
+
+        if (DataManager.loggedInUser != null && nuevoNivel > DataManager.loggedInUser.nivel)
         {
-            if (tipoContenido == "Preventivas")
-            {
-                SMenuManager.Instance.CompletarLeccion(1);
-            }
-            else if (tipoContenido == "Restrictivas")
-            {
-                SMenuManager.Instance.CompletarLeccion(2);
-            }
-            else if (tipoContenido == "Informativas")
-            {
-                SMenuManager.Instance.CompletarLeccion(3);
-            }
+            DataManager.loggedInUser.nivel = nuevoNivel;
+            // Llamamos al nuevo método para guardar los cambios en la base de datos.
+            DataManager.SaveUserChanges();
         }
 
-        btnFinalizarLeccion.image.color = Color.green;
-        Invoke("RegresarAlMenu", 0.5f);
+        if (btnFinalizarLeccion != null)
+        {
+            btnFinalizarLeccion.image.color = Color.green;
+            Invoke("RegresarAlMenu", 0.5f);
+        }
     }
 
     void RegresarAlMenu()

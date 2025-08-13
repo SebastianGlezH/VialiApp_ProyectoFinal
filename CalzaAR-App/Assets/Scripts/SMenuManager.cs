@@ -4,64 +4,61 @@ using UnityEngine.SceneManagement;
 
 public class SMenuManager : MonoBehaviour
 {
-    public static SMenuManager Instance { get; private set; }
-
+    // Las referencias de los botones se asignan en el Inspector.
     [Header("Botones")]
     public Button btnPreventivas;
     public Button btnRestrictivas;
     public Button btnInformativas;
     public Button btnTestGeneral;
+    public Button btnVolver;
 
     [Header("Colores")]
     public Color colorBloqueado = Color.gray;
     public Color colorActivo = Color.white;
 
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
     void Start()
     {
-        Debug.Log("Progreso guardado al iniciar: " + PlayerPrefs.GetInt("LeccionCompletada", 0));
-
-        // Configurar listeners para cada botón
-        btnPreventivas.onClick.AddListener(() => CargarInformacion("Preventivas"));
-        btnRestrictivas.onClick.AddListener(() => CargarInformacion("Restrictivas"));
-        btnInformativas.onClick.AddListener(() => CargarInformacion("Informativas"));
-        btnTestGeneral.onClick.AddListener(() => CargarTestGeneral());
+        // Se configura la UI y se actualizan los botones cada vez que la escena se carga.
+        if (btnPreventivas != null) btnPreventivas.onClick.AddListener(() => CargarInformacion("Preventivas"));
+        if (btnRestrictivas != null) btnRestrictivas.onClick.AddListener(() => CargarInformacion("Restrictivas"));
+        if (btnInformativas != null) btnInformativas.onClick.AddListener(() => CargarInformacion("Informativas"));
+        if (btnTestGeneral != null) btnTestGeneral.onClick.AddListener(() => CargarTestGeneral());
+        if (btnVolver != null) btnVolver.onClick.AddListener(VolverAMenuPrincipal);
 
         ActualizarBotones();
     }
 
-    private void ActualizarBotones()
+    public void ActualizarBotones()
     {
-        int leccionCompletada = PlayerPrefs.GetInt("LeccionCompletada", 0);
+        // Si no hay un usuario logueado, no hacemos nada.
+        if (DataManager.loggedInUser == null) return;
 
-        // Preventivas siempre activa
-        btnPreventivas.interactable = true;
-        btnPreventivas.image.color = colorActivo;
+        // Obtenemos el nivel directamente del usuario en memoria.
+        int nivelUsuario = DataManager.loggedInUser.nivel;
 
-        // Restrictivas se activa con el nivel 1
-        btnRestrictivas.interactable = (leccionCompletada >= 1);
-        btnRestrictivas.image.color = btnRestrictivas.interactable ? colorActivo : colorBloqueado;
+        // Lógica de bloqueo de botones basada en el nivel del usuario.
+        if (btnPreventivas != null)
+        {
+            btnPreventivas.interactable = (nivelUsuario >= 1);
+            btnPreventivas.image.color = btnPreventivas.interactable ? colorActivo : colorBloqueado;
+        }
 
-        // Informativas se activa con el nivel 2
-        btnInformativas.interactable = (leccionCompletada >= 2);
-        btnInformativas.image.color = btnInformativas.interactable ? colorActivo : colorBloqueado;
+        if (btnRestrictivas != null)
+        {
+            btnRestrictivas.interactable = (nivelUsuario >= 2);
+            btnRestrictivas.image.color = btnRestrictivas.interactable ? colorActivo : colorBloqueado;
+        }
 
-        // Test General se activa con el nivel 3
+        if (btnInformativas != null)
+        {
+            btnInformativas.interactable = (nivelUsuario >= 3);
+            btnInformativas.image.color = btnInformativas.interactable ? colorActivo : colorBloqueado;
+        }
+
         if (btnTestGeneral != null)
         {
-            btnTestGeneral.gameObject.SetActive(leccionCompletada >= 3);
+            // El Test General se activa cuando el nivel es 4
+            btnTestGeneral.gameObject.SetActive(nivelUsuario >= 4);
         }
     }
 
@@ -77,16 +74,8 @@ public class SMenuManager : MonoBehaviour
         SceneManager.LoadScene("Escena_Tests");
     }
 
-    public void CompletarLeccion(int leccionIndex)
+    public void VolverAMenuPrincipal()
     {
-        int nivelActual = PlayerPrefs.GetInt("LeccionCompletada", 0);
-
-        if (leccionIndex > nivelActual)
-        {
-            PlayerPrefs.SetInt("LeccionCompletada", leccionIndex);
-            PlayerPrefs.Save();
-            Debug.Log("Progreso actualizado a nivel: " + leccionIndex);
-        }
-        ActualizarBotones();
+        SceneManager.LoadScene("Escena_Menu");
     }
 }
