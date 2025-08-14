@@ -2103,6 +2103,26 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 029c62103aa05184b980a7f5109efa0d, type: 2}
   - {fileID: 11400000, guid: 64183067457c62647ba8890233d15d8c, type: 2}
   - {fileID: 11400000, guid: 74006675364229e4095dd4cde91440d0, type: 2}
+  - {fileID: 11400000, guid: c5dd74aa2ab964e4dbcee31ac6bcf1e3, type: 2}
+  - {fileID: 11400000, guid: b6bcab13e9577eb4190d94bf1a2e65e8, type: 2}
+  - {fileID: 11400000, guid: 47879a53942ff6e44b0a4fb949d4eec2, type: 2}
+  - {fileID: 11400000, guid: b4abe34817f70cd4bbd3bc267a66f489, type: 2}
+  - {fileID: 11400000, guid: df1b9a52f04972b438b1908aac683a93, type: 2}
+  - {fileID: 11400000, guid: 4d14024636728be4eb089b347c54bf34, type: 2}
+  - {fileID: 11400000, guid: 038dd4dc3a589a843930d57527eb2de1, type: 2}
+  - {fileID: 11400000, guid: f55ec481728d81045b482115ed936c7e, type: 2}
+  - {fileID: 11400000, guid: 64c2c0a2252763d4f9b5d1969a29be86, type: 2}
+  - {fileID: 11400000, guid: 834dce54ab302c743bd5debdc7bfc00d, type: 2}
+  - {fileID: 11400000, guid: 6b6b0fab178bb2a4393fcdf359c90942, type: 2}
+  - {fileID: 11400000, guid: 7b63712f38e2d894a941ff5fd6b2a534, type: 2}
+  - {fileID: 11400000, guid: 954f48aabf9076b428191ca7df384180, type: 2}
+  - {fileID: 11400000, guid: 07ddd46ef0fc3ca45bc40c0d15a25b37, type: 2}
+  - {fileID: 11400000, guid: 12e59764f06862044b89b761e2c77476, type: 2}
+  - {fileID: 11400000, guid: 6a51946bc35cea945b54528fa3fdd61e, type: 2}
+  - {fileID: 11400000, guid: 88055ebf065c0d344bb6d5f3d965d657, type: 2}
+  - {fileID: 11400000, guid: 54c39dfc4730f9a44b86f0d17658964e, type: 2}
+  - {fileID: 11400000, guid: 4733596fc601d3d4fb06ae1267ce4170, type: 2}
+  - {fileID: 11400000, guid: 5f9d9d13a594d6f48bcf751e6f21c6d8, type: 2}
   escenaResultados: Escena_Resultados
   sonidoCorrecto: {fileID: 8300000, guid: 4f0002e9e74424c42962b7159f483b5d, type: 3}
   sonidoIncorrecto: {fileID: 8300000, guid: cc7a607a150d6834b927990d6ccaa378, type: 3}

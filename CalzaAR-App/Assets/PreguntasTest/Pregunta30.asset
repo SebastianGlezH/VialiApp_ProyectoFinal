@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e262cf06bad49854eb32c104729e7ac8, type: 3}
-  m_Name: Pregunta11
+  m_Name: Pregunta30
   m_EditorClassIdentifier: 
-  imagenSenal: {fileID: 21300000, guid: 2817f4fcbb1547e4d85f6f53655fd5f1, type: 3}
-  pregunta: "\xBFQu\xE9 actividad indica esta se\xF1al?"
+  imagenSenal: {fileID: 21300000, guid: f05e6c425b085204297c646d69a72417, type: 3}
+  pregunta: "\xBFPor qu\xE9 se pone esta se\xF1al?"
   opciones:
-  - Senderismo
-  - "Escalada de monta\xF1a"
-  - "Esqu\xED"
-  respuestaCorrecta: 1
+  - "Para advertir a los conductores que est\xE1n cerca de una escuela y deben bajar
+    la velocidad. "
+  - Para indicar que hay un cruce de peatones.
+  - "Para indicar una parada de autob\xFAs escolar."
+  respuestaCorrecta: 0

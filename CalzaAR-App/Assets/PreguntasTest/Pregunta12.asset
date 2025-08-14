@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e262cf06bad49854eb32c104729e7ac8, type: 3}
-  m_Name: Pregunta11
+  m_Name: Pregunta12
   m_EditorClassIdentifier: 
-  imagenSenal: {fileID: 21300000, guid: 2817f4fcbb1547e4d85f6f53655fd5f1, type: 3}
-  pregunta: "\xBFQu\xE9 actividad indica esta se\xF1al?"
+  imagenSenal: {fileID: 21300000, guid: 0fe6f5c26b3963c4fa6947c38ad9e49e, type: 3}
+  pregunta: "Si ves esta se\xF1al, \xBFqu\xE9 tipo de lugar se encuentra cerca?"
   opciones:
-  - Senderismo
-  - "Escalada de monta\xF1a"
-  - "Esqu\xED"
-  respuestaCorrecta: 1
+  - Un mercado de alimentos
+  - Una tienda de ropa
+  - "Un lugar para comprar artesan\xEDas"
+  respuestaCorrecta: 2

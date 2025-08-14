@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e262cf06bad49854eb32c104729e7ac8, type: 3}
-  m_Name: Pregunta11
+  m_Name: Pregunta23
   m_EditorClassIdentifier: 
-  imagenSenal: {fileID: 21300000, guid: 2817f4fcbb1547e4d85f6f53655fd5f1, type: 3}
-  pregunta: "\xBFQu\xE9 actividad indica esta se\xF1al?"
+  imagenSenal: {fileID: 21300000, guid: 0bd76f9573fa27144882b452cef2fd03, type: 3}
+  pregunta: "Esta se\xF1al se encuentra com\xFAnmente cerca de hospitales o escuelas,
+    \xBFqu\xE9 significa?"
   opciones:
-  - Senderismo
-  - "Escalada de monta\xF1a"
-  - "Esqu\xED"
+  - Que se debe usar el claxon para avisar a los peatones.
+  - "Que est\xE1 prohibido usar la bocina o el claxon."
+  - "Que el claxon est\xE1 descompuesto."
   respuestaCorrecta: 1

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e262cf06bad49854eb32c104729e7ac8, type: 3}
-  m_Name: Pregunta11
+  m_Name: Pregunta15
   m_EditorClassIdentifier: 
-  imagenSenal: {fileID: 21300000, guid: 2817f4fcbb1547e4d85f6f53655fd5f1, type: 3}
-  pregunta: "\xBFQu\xE9 actividad indica esta se\xF1al?"
+  imagenSenal: {fileID: 21300000, guid: c080474a877a056458c9625a614b5df4, type: 3}
+  pregunta: "\xBFQu\xE9 acci\xF3n te indica esta se\xF1al?"
   opciones:
-  - Senderismo
-  - "Escalada de monta\xF1a"
-  - "Esqu\xED"
-  respuestaCorrecta: 1
+  - 'Mantener el lugar limpio depositando la basura en los botes '
+  - Que hay un parque para mascotas
+  - Que no se puede tirar basura
+  respuestaCorrecta: 0
