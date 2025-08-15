@@ -15,8 +15,17 @@ public class Card : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<MemoryGameManager>();
+        SetInitialState();
     }
-
+    private void SetInitialState()
+{
+    // Siempre iniciar mostrando la parte trasera
+    isFlipped = false;
+    front.SetActive(false);
+    back.SetActive(true);
+    transform.rotation = Quaternion.identity; // Asegura que esté en 0,0,0
+    transform.localScale = Vector3.one;
+}
     public void OnCardClicked()
     {
         if (!isFlipped && !gameManager.IsBusy) // Evitar clics dobles
